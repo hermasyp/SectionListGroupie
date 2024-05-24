@@ -26,8 +26,9 @@ class HeaderItem(private val title: String, private val onHeaderClick: (item: St
 class DataItem(private val data: String, private val onItemClick: (item: String) -> Unit) :
     BindableItem<ItemSectionDataBinding>() {
     override fun bind(viewBinding: ItemSectionDataBinding, position: Int) {
-        viewBinding.tvSectionData.text = data
-        viewBinding.root.setOnClickListener { onItemClick.invoke(data) }
+        val tv1Data = viewBinding.et1.text
+        val tv2Data = viewBinding.et2.text
+        viewBinding.btnSubmit.setOnClickListener { onItemClick.invoke("$tv1Data $tv2Data") }
     }
 
     override fun getLayout(): Int = R.layout.item_section_data
